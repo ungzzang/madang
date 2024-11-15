@@ -4,6 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.green.madang.manager.book.BookMapper">
+
     <insert id="insBook">
         INSERT INTO book
            SET bookname= #{bookName}
@@ -11,6 +12,41 @@
              , price = #{price}
     </insert>
 
+    <!--${(page-1)*size} 이렇게 하던가 #{startIdx} 이렇게 하고
+        BoardService에서 로직처리하던가 해야함-->
+    <!-- $는 호따옴표 들어가지 않게 하려고-->
+    <select id="selBookList">
+        SELECT bookid as bookId
+             , bookname as bookName
+             , publisher
+             , price
+          FROM book
+        <if test=" searchText != null and searchText != '' ">
+            WHERE bookname LIKE '%${searchText}%'
+        </if>
+         ORDER BY bookname, bookid
+         LIMIT ${(page-1)*size}, #{size}
+    </select>
 
+    <update id="updBook">
+        UPDATE book
+        <set>
+            <if test=" bookName != null and bookName != '' ">
+                bookname = #{bookName}
+            </if>
+            <if test=" publisher != null and publisher != '' ">
+                , publisher = #{publisher}
+            </if>
+            <if test=" price != null and price >= 0 ">
+                , price = #{price}
+            </if>
+        </set>
+        WHERE bookid = #{bookId}
+    </update>
+
+    <delete id="delBook">
+        DELETE FROM book
+        WHERE bookid = #{bookId}
+    </delete>
 
 </mapper>

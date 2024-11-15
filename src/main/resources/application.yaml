@@ -1,3 +1,7 @@
+# 주석은 똑같다.
+mybatis:
+  mapper-locations: mappers/**/*.xml
+
 spring:
   application:
     name: madang
@@ -7,7 +11,12 @@ spring:
     username: root
     password: green502
 
-# 주석은 똑같다.
-mybatis:
-  mapper-locations: mappers/**/*.xml
+
+springdoc:
+  api-docs:
+    version: openapi_3_0
+  swagger_ui:
+    default-model-expand-depth: 10
+    default-models-expand-depth: -1
+    path: /swagger
 
