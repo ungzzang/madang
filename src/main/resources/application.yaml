@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: madang
+
+  datasource:
+    url: jdbc:mariadb://localhost/madang_spring
+    username: root
+    password: green502
+
+# 주석은 똑같다.
+mybatis:
+  mapper-locations: mappers/**/*.xml
+
