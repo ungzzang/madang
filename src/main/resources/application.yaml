@@ -3,7 +3,7 @@ mybatis:
   mapper-locations: mappers/**/*.xml
 
 spring:
-  application:
+  application: # 탭이나 스페이스로 하위라는 거 구분
     name: madang
 
   datasource:
@@ -16,7 +16,7 @@ springdoc:
   api-docs:
     version: openapi_3_0
   swagger_ui:
-    default-model-expand-depth: 10
+    default-model-expand-depth: 2
     default-models-expand-depth: -1
-    path: /swagger
+    path: /swagger # 이렇게만 쳐도 스웨거 들어가게하려고
 

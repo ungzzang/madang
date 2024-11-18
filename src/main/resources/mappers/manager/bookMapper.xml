@@ -25,8 +25,9 @@
             WHERE bookname LIKE '%${searchText}%'
         </if>
          ORDER BY bookname, bookid
-         LIMIT ${(page-1)*size}, #{size}
+         LIMIT #{starIdx}, #{size}
     </select>
+    <!--LIMIT ${(page-1)*size}, #{size} 이렇게도 됨-->
 
     <update id="updBook">
         UPDATE book
