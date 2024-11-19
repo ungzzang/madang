@@ -12,4 +12,14 @@
          WHERE bookid = #{bookId};
     </insert>
 
+    <select id="selOrderList">
+        SELECT A.orderId, A.saleprice, A.orderdate
+                , B.bookid, B.bookname
+          FROM orders  A
+          JOIN book  B
+            ON A.bookid = B.bookid
+         WHERE A.custid = #{custId}
+         ORDER BY orderdate DESC
+    </select>
+
 </mapper>
